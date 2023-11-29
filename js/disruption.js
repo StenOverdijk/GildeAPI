@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     fetchNearestStations(51.19417, 5.9875);
     fetchNSDisruptions();
-    fetchPublicHolidays(countryCode, year); 
+    // fetchPublicHolidays(countryCode, year); 
   
     const countryCode = '+31'; 
     const year = 2024;
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(function () {
       fetchNearestStations(51.19417, 5.9875);
       fetchNSDisruptions();
-      fetchPublicHolidays(countryCode, year); 
+      // fetchPublicHolidays(countryCode, year); 
     }, refreshInterval);
   });
   
@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   
       const data = await response.json();
+
+      console.dir(data)
+
       displayDisruptions(data);
     } catch (error) {
       console.error('Error fetching disruptions:', error);

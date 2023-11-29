@@ -1,26 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetchNearestStations(51.19417, 5.9875);
-    fetchNSDisruptions();
-    fetchPublicHolidays(countryCode, year); 
+
+    console.log('holiday.js - in content loaded event');
+
+    // fetchNearestStations(51.19417, 5.9875);
+    // fetchNSDisruptions();
+    // fetchPublicHolidays(countryCode, year); 
   
-    const countryCode = '+31'; 
-    const year = 2024;
-    const refreshInterval = 5 * 60 * 1000;
+    // const countryCode = '+31'; 
+    // const year = 2024;
+
+    const refreshInterval = 2 * 60 * 1000;
   
+    getPublicHolidays();
+
     setInterval(function () {
-      fetchNearestStations(51.19417, 5.9875);
-      fetchNSDisruptions();
-      fetchPublicHolidays(countryCode, year); 
+      // fetchNearestStations(51.19417, 5.9875);
+      // fetchNSDisruptions();
+      // fetchPublicHolidays(countryCode, year);
+      getPublicHolidays()
     }, refreshInterval);
   });
 
   
 function getPublicHolidays() {
-  const country_code = encodeURIComponent("+31");
+
+  console.log('getting public holidays...')
+
+  const countryCode = encodeURIComponent("+31");
   const year = 2024;
 
-
-  const apiUrl = `https://date.nager.at/api/v3/NextPublicHolidays/%2B31`;
+  const apiUrl = `https://date.nager.at/api/v3/NextPublicHolidays/${countryCode}`;
 
   fetch(apiUrl)
       .then(response => response.json())
@@ -29,6 +38,10 @@ function getPublicHolidays() {
 }
 
 function displayHolidays(holidays) {
+
+  console.log('displaying public holidays...')
+
+  // const holidaysListEl(ement)
   const holidaysList = document.getElementById('holidaysList');
 
   if (holidays && holidays.length > 0) {
@@ -45,4 +58,4 @@ function displayHolidays(holidays) {
 }
 
 // Call the function to fetch and display holidays on page load
-getPublicHolidays();
+// getPublicHolidays();

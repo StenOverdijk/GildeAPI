@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   
   function displayDisruptions(disruptions) {
-    const disruptionsList = document.getElementById('disruptions-list');
+    const disruptionsList = document.getElementById('nsDisruptions');
     disruptionsList.innerHTML = '';
   
     disruptions.forEach(disruption => {
@@ -51,11 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
       if (disruption.title && disruption.timespans && disruption.timespans.length > 0) {
         const startTime = disruption.timespans[0].start;
         const endTime = disruption.timespans[0].end;
-        listItem.innerHTML = `<strong>${disruption.title}</strong><br>Start: ${startTime}, End: ${endTime}`;
+        
+        
+        // Adjusting the font size for the title and content
+        listItem.innerHTML = `<strong style="font-size: 14px;">${disruption.title}</strong><br><span style="font-size: 12px;">Start: ${startTime}, End: ${endTime}</span>`;
       } else {
         listItem.textContent = 'Unknown disruption';
+        // Adjusting the font size for the unknown disruption message
+        listItem.style.fontSize = '12px';
       }
   
       disruptionsList.appendChild(listItem);
     });
   }
+  

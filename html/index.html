@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="../css/style.css">
+          <link rel="stylesheet" href="../css/button.css">
+          <link rel="stylesheet" href="../css/hamburger.css">
+          <link rel="stylesheet" href="../css/form.css">
+
+    </head>
+    <body>
+        <header>
+                <button id="nsBTN" class="btn">NS</button>
+                <button id="holidayBTN" class="btn">Holidays</button>
+                <button id="andersBTN" class="btn">buienRadar</button>
+            <div id="rightButton">
+                <div id="settings">
+                    <div class="hamburger-menu" onclick="toggleMenu()">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                      </div>
+                      
+                      <div class="menu-tabs">
+                        <a id="slideBTN" href="#">slides</a>
+                      </div>
+                </div>
+            </div>
+        </header>
+
+    <div class="container">
+
+        <div id="mainLeft">
+            <div class="your-container" id="nsDisruptions">
+
+            </div>
+            <div id="nsForm">
+
+            </div>
+            <div class="your-container" id="holidaysList">
+
+            </div>
+
+            <div class="your-container" id="buienRadar">
+                <iframe src="//gadgets.buienradar.nl/gadget/forecastandstation/6380/" noresize scrolling=no hspace=0 vspace=0 frameborder=0 marginheight=0 marginwidth=0 width=100% height=35%></iframe>
+            </div>
+        </div>
+
+
+
+        <div id="mainRight">
+            <div id="picture">
+            <img id="nsIMG" src="../img/nstrein.png">
+            <img id="holidayIMG" src="../img/feestdagen.png">
+            </div>
+        </div>   
+    
+    
+    </div>
+    
+
+        <script src="../js/scripts.js"></script>
+        <script src="../js/disruption.js"></script>
+        <script src="../js/holiday.js"></script>
+        <script src="../js/nsform.js"></script>
+        <script src="../js/background.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
+</html>

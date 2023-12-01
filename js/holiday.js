@@ -19,7 +19,8 @@ function getPublicHolidays() {
   const country_code = encodeURIComponent("+31");
   const year = 2024;
 
-  const apiUrl = `https://date.nager.at/api/v3/PublicHolidays/${year}/${country_code}`;
+
+  const apiUrl = `https://date.nager.at/api/v3/NextPublicHolidays/%2B31`;
 
   fetch(apiUrl)
       .then(response => response.json())
@@ -31,13 +32,15 @@ function displayHolidays(holidays) {
   const holidaysList = document.getElementById('holidaysList');
 
   if (holidays && holidays.length > 0) {
-      const listItems = holidays.map(holiday => {
-          return `<li>${holiday.date} - ${holiday.name}</li>`;
-      });
+    const listItems = holidays.map(holiday => {
+      return `<p style="font-size: 14px;">${holiday.name}, <br> ${holiday.date}</p>`;
+      // Adjust font-size and color values according to your preferences
+    });
 
-      holidaysList.innerHTML = `<ul>${listItems.join('')}</ul>`;
+    holidaysList.innerHTML = `<ul>${listItems.join('')}</ul>`;
   } else {
-      holidaysList.innerHTML = '<p>No holidays data available.</p>';
+    holidaysList.innerHTML = '<p style="font-size: 16px; color: #333;">No holidays data available.</p>';
+    // Adjust font-size and color values according to your preferences
   }
 }
 

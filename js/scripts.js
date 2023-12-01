@@ -1,3 +1,100 @@
+const holidays = document.getElementById("holidaysList")
+const nsForm = document.getElementById("nsForm")
+const nsDisruptions = document.getElementById("nsDisruptions")
+const nsBTN = document.getElementById("nsBTN")
+const holidayBTN = document.getElementById("holidayBTN")
+const nsIMG = document.getElementById("nsIMG")
+const buienRadar = document.getElementById("buienRadar")
+const buienRadarBTN = document.getElementById("andersBTN")
+const slideBTN = document.getElementById("slideBTN")
+const holidayIMG = document.getElementById("holidayIMG")
+
+let isAutomaticSwitchingEnabled = false;
+let intervalId;
+
+function switchButtons() {
+  nsBTN.click();
+  setTimeout(() => {
+    holidayBTN.click();
+    setTimeout(() => {
+      buienRadarBTN.click();
+    }, 5000); // 5 seconds delay
+  }, 5000); // 5 seconds delay
+}
+
+// Start the automatic switching
+function startAutomaticSwitching() {
+  isAutomaticSwitchingEnabled = true;
+  switchButtons(); // Initial switch
+  intervalId = setInterval(switchButtons, 15000); // Repeat every 15 seconds (adjust as needed)
+}
+
+// Stop the automatic switching
+function stopAutomaticSwitching() {
+  isAutomaticSwitchingEnabled = false;
+  clearInterval(intervalId);
+}
+
+// Toggle automatic switching when the "Slide" button is clicked
+slideBTN.addEventListener("click", () => {
+  if (isAutomaticSwitchingEnabled) {
+    stopAutomaticSwitching();
+  } else {
+    startAutomaticSwitching();
+  }
+});
+
+// Initial setup
+holidays.style.display = "none";
+nsForm.style.display = "block";
+nsDisruptions.style.display = "block";
+holidayIMG.style.display = "none";
+buienRadar.style.display = "none";
+
+function toggleMenu() {
+  const menuButton = document.querySelector('.hamburger-menu');
+  menuButton.classList.toggle('open');
+}
+
+
+nsBTN.addEventListener("click", () => {
+  holidays.style.display = "none"
+  buienRadar.style.display = "none"
+  nsForm.style.display = "block"
+  nsDisruptions.style.display = "block"
+  nsIMG.style.display = "block"
+  holidayIMG.style.display = "none"
+
+});
+
+holidayBTN.addEventListener("click", () => {
+  holidays.style.display = "block"
+  nsForm.style.display = "none"
+  nsDisruptions.style.display = "none"
+  nsIMG.style.display = "none"
+  buienRadar.style.display = "none"
+  holidayIMG.style.display = "block"
+});
+
+buienRadarBTN.addEventListener("click", () => {
+  holidays.style.display = "none"
+  nsForm.style.display = "none"
+  nsDisruptions.style.display = "none"
+  nsIMG.style.display = "none"
+  buienRadar.style.display = "block"
+  holidayIMG.style.display = "none"
+
+});
+
+
+
+
+function toggleMenu() {
+  const menuButton = document.querySelector('.hamburger-menu');
+  menuButton.classList.toggle('open');
+}
+
+
 
 var currentSlide = 1;
 

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function getDepartures() {
     const station = 'Rm'; // Roermond
-    const maxJourneys = 20;
+    const maxJourneys = 10;
 
     const apiKey = 'e65d65e7a82b4f2c9c2b5ec34deac34c';
     const apiUrl = `https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/departures?lang=en&station=${station}&maxJourneys=${maxJourneys}`;
@@ -44,14 +44,16 @@ function displayDepartures(data) {
 
     if (payload && payload.departures && payload.departures.length > 0) {
         // Create and append rows for each departure
-        payload.departures.forEach(departure => {
+        payload.departures.forEach(departure => { // Show only 5 departures
             const plannedDepartureTime = new Date(departure.plannedDateTime);
             const actualDepartureTime = departure.actualDateTime ? new Date(departure.actualDateTime) : null;
 
-            // Format the time in Netherlands timezone with 24-hour clock
+            // Format the time in Netherlands timezone with 24-hour clock and shorter format (HH:mm)
             const formattedPlannedDepartureTime = plannedDepartureTime.toLocaleTimeString(undefined, {
                 timeZone: 'Europe/Amsterdam',
-                hour12: false
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
             });
 
             let delayInfo = '';
@@ -68,47 +70,18 @@ function displayDepartures(data) {
 
             // Create and append cells for each departure detail
             const timeCell = document.createElement('td');
-            timeCell.innerHTML = `${formattedPlannedDepartureTime} ${delayInfo}`;
+            timeCell.innerHTML = `<div class="departure-time">${formattedPlannedDepartureTime} ${delayInfo}</div>`;
 
-            const directionCell = document.createElement('td');
-            directionCell.textContent = departure.direction;
+            const destinationCell = document.createElement('td');
+            destinationCell.innerHTML = `<div class="destination">${departure.direction}</div><div class="via">${getViaStationsText(departure.routeStations)}</div>`;
 
-            // If there are in-between stops, create a cell for them
-            const inBetweenStopsCell = document.createElement('td');
-            let inBetweenStopsText = '';
-
-            if (departure.routeStations && departure.routeStations.length > 0) {
-                // Use routeStations if available
-                inBetweenStopsText = departure.routeStations
-                    .map(stop => stop.mediumName)
-                    .join(', '); // Comma-separated format
-
-                // Include the main destination (first stop) if there's only one stop
-                if (departure.routeStations.length === 1) {
-                    inBetweenStopsText = departure.routeStations[0].mediumName;
-                }
-            }
-
-            // Set the text content to the in-between stops or an empty string
-            inBetweenStopsCell.textContent = inBetweenStopsText;
-
-            const trackCell = document.createElement('td');
-            trackCell.textContent = departure.plannedTrack;
+            const platformCell = document.createElement('td');
+            platformCell.innerHTML = `<div class="platform">${departure.plannedTrack}</div><div class="train-type">${getTrainTypeText(departure.product)}</div>`;
 
             // Append cells to the row
             departureRow.appendChild(timeCell);
-            departureRow.appendChild(directionCell);
-
-            // Append the in-between stops cell only if there are in-between stops
-            if (inBetweenStopsText !== '') {
-                departureRow.appendChild(inBetweenStopsCell);
-            } else {
-                // If no in-between stops, create an empty cell
-                const emptyCell = document.createElement('td');
-                departureRow.appendChild(emptyCell);
-            }
-
-            departureRow.appendChild(trackCell);
+            departureRow.appendChild(destinationCell);
+            departureRow.appendChild(platformCell);
 
             // Append the row to the departures table body
             departuresTableBody.appendChild(departureRow);
@@ -117,7 +90,7 @@ function displayDepartures(data) {
         // If no departures are available, display a message
         const noDeparturesRow = document.createElement('tr');
         const noDeparturesCell = document.createElement('td');
-        noDeparturesCell.colSpan = 4; // Span 4 columns
+        noDeparturesCell.colSpan = 3; // Span 3 columns
         noDeparturesCell.className = 'text-center';
         noDeparturesCell.textContent = 'Geen vertrekken beschikbaar.';
         noDeparturesRow.appendChild(noDeparturesCell);
@@ -125,4 +98,17 @@ function displayDepartures(data) {
     }
 }
 
+// Helper function to get the via stations text
+function getViaStationsText(routeStations) {
+    if (routeStations && routeStations.length > 0) {
+        return `Via ${routeStations.map(stop => stop.mediumName).join(', ')}`;
+    }
+    return '';
+}
+
+
+// Helper function to get the train type text
+function getTrainTypeText(product) {
+    return product ? `${product.shortCategoryName} ${product.number}` : '';
+}
 

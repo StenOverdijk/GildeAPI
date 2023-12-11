@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <div id="header">
+            <button id="loginButton">Login</button>
+            <button id="mainPage">Hoofdpagina</button>
+        </div>
+
+        <div class="container">
+            <div class="mainDiv" id="loginDiv">
+                <form class="form">
+                    <input class="input" type="email" name="email" placeholder="Email" id="emailInput" required="">
+                    <input class="input" type="password" name="pswd" placeholder="Password" id="passwordInput" required="">
+                    <button>Log in</button>
+                </form>
+            </div>
+
+            <div class="mainDiv" id="nieuwtjes">
+                <p id="allData"></p>
+                <p id="allDatum"></p> 
+            </div>
+
+            <div class="mainDiv" id="loggedinDiv">
+                <div>
+                    <p>Announcements</p>
+                    <input class="input" id="datum" placeholder="Datum">
+                    <input class="input" id="titel" placeholder="Titel">
+                    <input class="input" id="inhoud" placeholder="Inhoud">
+                    <button id="papa" onclick="updateData()">Voeg toe</button>
+                    <button id="removeLastRowBtn" onclick="removeLastRow()">Verwijder alles</button>
+                </div>
+            </div>
+        </div>
+        <script src="../js/script.js"></script>
+        <script src="../js/login.js"></script>
+        <script src="../js/updatedata.js"></script>
+        <script src="../js/removedata.js"></script>
+        <script src="../js/anouncements.js"></script>
+    </body>
+</html>

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok) {
           // Login successful, show the loggedinDiv
           document.getElementById('loginDiv').style.display = 'none';
-          document.getElementById('loggedinDiv').style.display = 'block';
+          document.getElementById('loggedInDiv').style.display = 'block';
         } else {
           // Login failed, handle the error (you can display an error message)
           console.error(data.error);

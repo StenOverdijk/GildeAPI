@@ -16,34 +16,18 @@ body {
     align-items: center;
 }
 
-.container1 {
+.container {
     height: 90%;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.6); /* Adjust the alpha channel (last value) to control transparency */
 }
 
-.container2 {
-    height: 90%;
-    width: 100%;
-    background-color: beige;
-}
 
-.container3 {
-    height: 90%;
-    width: 100%;
-    background-color: purple;
-}
-
-.container4 {
-    height: 90%;
-    width: 100%;
-    background-color: aqua;
-}
 
 .table2 {
     background-color: rgba(255, 255, 255, 0.6); /* Adjust the alpha channel (last value) to control transparency */
     border-spacing: 15px; /* Adjust the spacing to your preference */
-    width: 80%; /* Adjust the width percentage to your preference */
+    width: 60%; /* Adjust the width percentage to your preference */
     height: 100%;
     margin: auto; /* Center the table horizontally */
     padding: 3%;

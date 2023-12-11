@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/loginform.css">
+
 
 </head>
 <body >    
@@ -14,11 +16,10 @@
         <button id="c2Btn">container2</button>
         <button id="c3Btn">container3</button>
         <button id="c4Btn">container4</button>
-
         <button id="loginBtn">login</button>
     </div>
 
-    <div id="container1">
+    <div class="container" id="mainPage1">
         <table class="table2" id="tableNS">
             <thead>
                 <tr>
@@ -33,19 +34,43 @@
         </table>    
     </div>
 
-    <div class="container2" id="container2">
-      
+    <div class="container" id="mainPage2">
+      <p>sdasdsad</p>
     </div>
 
-    <div class="container3" id="container3">
+    <div class="container" id="mainPage3">
         <p>asdadasdasdsads</p>
     </div>
 
-    <div class="container4" id="container4">
-        <p>sadsadas</p>
+    <div class="container" id="mainPage4">
+        <p id="allData"></p>
+        <p id="allDatum"></p>    
     </div>
 
+    <div class="container" id="loginDiv">
+        <form class="form">
+            <input class="input" type="email" name="email" placeholder="Email" id="emailInput" required="">
+            <input class="input" type="password" name="pswd" placeholder="Password" id="passwordInput" required="">
+            <button>Log in</button>
+        </form>
+    </div>
 
+    <div class="container" id="loggedInDiv">
+        <div>
+            <p>Announcements</p>
+            <input class="input" id="datum" placeholder="Datum">
+            <input class="input" id="titel" placeholder="Titel">
+            <input class="input" id="inhoud" placeholder="Inhoud">
+            <button id="papa" onclick="updateData()">Voeg toe</button>
+            <button id="removeLastRowBtn" onclick="removeLastRow()">Verwijder alles</button>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/updatedata.js"></script>
+    <script src="../js/removedata.js"></script>
+    <script src="../js/anouncements.js"></script>
     <script src="../js/ns.js" defer></script>
     <script src="../js/main.js"></script>
 </body>

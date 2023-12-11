@@ -1,18 +1,31 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body >    
+
     <div class="header" id="mainHeader">
-        <button id="container1Btn">container1</button>
-        <button id="container2Btn">container2</button>
-        <button id="container3Btn">container3</button>
+        <button id="c1Btn">container1</button>
+        <button id="c2Btn">container2</button>
+        <button id="c3Btn">container3</button>
     </div>
 
-    <div class="container1" id="container1">
-
+    <div id="container1">
+        <table class="table2" id="tableNS">
+            <thead>
+                <tr>
+                    <th>Vertrek</th>
+                    <th>Richting</th>
+                    <th>Tussenstops</th>
+                    <th>Spoor</th>
+                </tr>
+            </thead>
+            <tbody id="departuresTableBody">
+            </tbody>
+        </table>    
     </div>
 
     <div class="container2" id="container2">
@@ -22,6 +35,7 @@
     <div class="container3" id="container3">
 
     </div>
-
+    <script src="../js/ns.js" defer></script>
     <script src="../js/main.js"></script>
 </body>
+</html>

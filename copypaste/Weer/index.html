@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Het weer</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+</head>
+<body>
+
+    <div id="background">
+        <img id="mainImage" src="">
+    </div>
+    <div class="toast toast-error hide">
+        <button class="btn btn-clear float-right"></button>
+    </div>
+
+    <div id="weatherContainer" class="col-10">
+        <div id="currentDay">
+            <div id="largeInfoHolder">
+                <h2 id="mainCity"></h2>
+                <p id="currentDate"></p>
+                <p id="currentWeather"></p>
+                <img id="weatherIcon" src="" alt="Weericoon"> 
+                <h1 id="mainTemp"></h1>
+                <p>Wind: <mainWind></mainWind> km/u | Vochtigheid: <mainHumidity></mainHumidity> %</p>
+            </div>
+        </div>
+        <ul id="fiveDayForecast"> 
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/nl.js"></script> 
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

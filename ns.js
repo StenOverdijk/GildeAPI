@@ -43,8 +43,15 @@ function displayDepartures(data) {
     const payload = data && data.payload;
 
     if (payload && payload.departures && payload.departures.length > 0) {
+        // Sort departures based on planned departure time
+        const sortedDepartures = payload.departures.sort((a, b) => {
+            const aTime = new Date(a.plannedDateTime).getTime();
+            const bTime = new Date(b.plannedDateTime).getTime();
+            return aTime - bTime;
+        });
+
         // Create and append rows for each departure
-        payload.departures.forEach(departure => { // Show only 5 departures
+        sortedDepartures.forEach(departure => {
             const plannedDepartureTime = new Date(departure.plannedDateTime);
             const actualDepartureTime = departure.actualDateTime ? new Date(departure.actualDateTime) : null;
 
@@ -65,7 +72,6 @@ function displayDepartures(data) {
                 }
             }
 
-
             // Create a table row for each departure
             const departureRow = document.createElement('tr');
 
@@ -81,7 +87,6 @@ function displayDepartures(data) {
             const destinationCell = document.createElement('td');
             destinationCell.className = 'destination';
             destinationCell.innerHTML = `<div class="destination fs-4 fw-bold">${departure.direction}</div><div class="via fs-6"><i>${getViaStationsText(departure.routeStations)}</i></div>`;
-
 
             const timeUntilDepartureCell = document.createElement('td');
             timeUntilDepartureCell.className = 'time-until-departure fs-4 fw-bold';
@@ -130,7 +135,7 @@ function getTrainTypeText(product) {
 function getTimeUntilDeparture(plannedTime, actualTime) {
     if (actualTime) {
         const delayMinutes = Math.round((actualTime - new Date()) / (1000 * 60));
-        return delayMinutes > 0 ? `${delayMinutes} min` : '';
+        return delayMinutes > 0 ? `${delayMinutes} min` : '<1 min';
     }
     return '';
 }

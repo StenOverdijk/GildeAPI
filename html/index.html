@@ -6,17 +6,27 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/button.css">
     <link rel="stylesheet" href="../css/loginform.css">
+    <link rel="stylesheet" href="../css/hamburger.css">
+
 
 
 </head>
 <body >    
 
     <div class="header" id="mainHeader">
-        <button id="c1Btn">container1</button>
+        <!-- <button id="c1Btn">container1</button>
         <button id="c2Btn">container2</button>
         <button id="c3Btn">container3</button>
         <button id="c4Btn">container4</button>
-        <button id="loginBtn">login</button>
+        <button id="loginBtn">login</button> -->
+        <div class="menu-icon" id="menuIcon">&#9776;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="../copypaste/Weer/index.html" class="menu-item">Weer</a>
+          <a href="#" class="menu-item">Button 2</a>
+          <a href="#" class="menu-item">Button 3</a>
+          <a href="#" class="menu-item">Button 4</a>
+          <a href="#" class="menu-item">login</a>
+        </div>  
     </div>
 
     <div class="container" id="mainPage1">
@@ -35,7 +45,7 @@
     </div>
 
     <div class="container" id="mainPage2">
-      <p>sdasdsad</p>
+  
     </div>
 
     <div class="container" id="mainPage3">
@@ -43,8 +53,7 @@
     </div>
 
     <div class="container" id="mainPage4">
-        <p id="allData"></p>
-        <p id="allDatum"></p>    
+
     </div>
 
     <div class="container" id="loginDiv">
@@ -65,7 +74,7 @@
             <button id="removeLastRowBtn" onclick="removeLastRow()">Verwijder alles</button>
         </div>
     </div>
-
+    <script src="../js/hamburger.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/updatedata.js"></script>

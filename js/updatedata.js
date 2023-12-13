@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('http://localhost:3000/getAllData')
       .then(response => response.json())
       .then(data => {
-        const allDataContainer = document.getElementById('allData');
+        const allDataContainer = document.getElementById('mainPage4');
         if (data && data.length > 0) {
           const rowsHTML = data.map(row => {
             return `
-            <div>            
-            <p><strong>Datum:</strong> ${row.datum}</p>
-            <p><strong>Titel:</strong> ${row.titel}</p>
+            <div class="anouncements">            
+            <p><strong>${row.datum} </strong> </p>
+            <p><strong>${row.titel}</strong></p>
             <p><strong>Inhoud:</strong> ${row.inhoud}</p>
             </div>`;
           }).join('');

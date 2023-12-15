@@ -72,20 +72,3 @@
     justify-content: center;
   }
 
-#loginBtn {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: white;
-    background-color: #171717;
-    padding: 1em 2em;
-    border: none;
-    border-radius: .6rem;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    width: 8%;
-    left: 55%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }

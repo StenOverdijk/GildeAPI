@@ -10,11 +10,7 @@ mainPage4 = document.getElementById("mainPage4")
 loginDiv = document.getElementById("loginDiv")
 loggedInDiv = document.getElementById("loggedInDiv")
 
-mainPage1.style.display = 'none'
-mainPage2.style.display = 'none'
-mainPage3.style.display = 'none'
-mainPage4.style.display = 'none'
-loginDiv.style.display = 'none'
+loginDiv.style.display = 'block'
 loggedInDiv.style.display = 'none'
 
 

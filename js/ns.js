@@ -43,8 +43,15 @@ function displayDepartures(data) {
     const payload = data && data.payload;
 
     if (payload && payload.departures && payload.departures.length > 0) {
+        // Sort departures based on planned departure time
+        const sortedDepartures = payload.departures.sort((a, b) => {
+            const aTime = new Date(a.plannedDateTime).getTime();
+            const bTime = new Date(b.plannedDateTime).getTime();
+            return aTime - bTime;
+        });
+
         // Create and append rows for each departure
-        payload.departures.forEach(departure => { // Show only 5 departures
+        sortedDepartures.forEach(departure => {
             const plannedDepartureTime = new Date(departure.plannedDateTime);
             const actualDepartureTime = departure.actualDateTime ? new Date(departure.actualDateTime) : null;
 
@@ -70,18 +77,31 @@ function displayDepartures(data) {
 
             // Create and append cells for each departure detail
             const timeCell = document.createElement('td');
-            timeCell.innerHTML = `<div class="departure-time">${formattedPlannedDepartureTime} ${delayInfo}</div>`;
-
-            const destinationCell = document.createElement('td');
-            destinationCell.innerHTML = `<div class="destination">${departure.direction}</div><div class="via">${getViaStationsText(departure.routeStations)}</div>`;
+            timeCell.className = 'departure-time fs-4 fw-bold';
+            timeCell.innerHTML = `${formattedPlannedDepartureTime} ${delayInfo}`;
 
             const platformCell = document.createElement('td');
-            platformCell.innerHTML = `<div class="platform">${departure.plannedTrack}</div><div class="train-type">${getTrainTypeText(departure.product)}</div>`;
+            platformCell.className = 'platform fs-4 fw-bold';
+            platformCell.textContent = departure.plannedTrack;
+
+            const destinationCell = document.createElement('td');
+            destinationCell.className = 'destination';
+            destinationCell.innerHTML = `<div class="destination fs-4 fw-bold">${departure.direction}</div><div class="via fs-6"><i>${getViaStationsText(departure.routeStations)}</i></div>`;
+
+            const timeUntilDepartureCell = document.createElement('td');
+            timeUntilDepartureCell.className = 'time-until-departure fs-4 fw-bold';
+            timeUntilDepartureCell.textContent = getTimeUntilDeparture(plannedDepartureTime, actualDepartureTime);
+
+            const trainTypeCell = document.createElement('td');
+            trainTypeCell.className = 'train-type fs-4 fw-bold';
+            trainTypeCell.textContent = getTrainTypeText(departure.product);
 
             // Append cells to the row
             departureRow.appendChild(timeCell);
-            departureRow.appendChild(destinationCell);
             departureRow.appendChild(platformCell);
+            departureRow.appendChild(destinationCell);
+            departureRow.appendChild(timeUntilDepartureCell);
+            departureRow.appendChild(trainTypeCell);
 
             // Append the row to the departures table body
             departuresTableBody.appendChild(departureRow);
@@ -90,7 +110,7 @@ function displayDepartures(data) {
         // If no departures are available, display a message
         const noDeparturesRow = document.createElement('tr');
         const noDeparturesCell = document.createElement('td');
-        noDeparturesCell.colSpan = 3; // Span 3 columns
+        noDeparturesCell.colSpan = 5; // Span 5 columns
         noDeparturesCell.className = 'text-center';
         noDeparturesCell.textContent = 'Geen vertrekken beschikbaar.';
         noDeparturesRow.appendChild(noDeparturesCell);
@@ -106,9 +126,20 @@ function getViaStationsText(routeStations) {
     return '';
 }
 
-
 // Helper function to get the train type text
 function getTrainTypeText(product) {
     return product ? `${product.shortCategoryName} ${product.number}` : '';
 }
+
+// Helper function to get the time until departure
+function getTimeUntilDeparture(plannedTime, actualTime) {
+    if (actualTime) {
+        const delayMinutes = Math.round((actualTime - new Date()) / (1000 * 60));
+        return delayMinutes > 0 ? `${delayMinutes} min` : '<1 min';
+    }
+    return '';
+}
+
+
+
 

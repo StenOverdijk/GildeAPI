@@ -64,7 +64,7 @@ $(document).ready(function () {
         $('#currentWeather').text(`${translateWeather(data.weather[0].main)}`);
         $('mainWind').text(data.wind.speed);
         $('mainHumidity').text(data.main.humidity);
-        $('#mainImage').attr("src", `assets/img/${data.weather[0].icon}_f.png`);
+        $('#mainImage').attr("src", `../img/${data.weather[0].icon}_f.png`);
         $('#weatherIcon').attr("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
     }
 

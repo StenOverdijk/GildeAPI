@@ -15,8 +15,8 @@ Welcome to the GildeAPI repository! GildeAPI is a School Information Display Sys
 ### Weather Updates
 
 - Shows current weather conditions for the school's location.
-- Includes temperature, weather description, and any relevant alerts.
-- Regularly updates to keep the information current.
+- Includes temperature, weather description.
+- Updates every second to ensure accuracy.
 
 ### Messages from Teachers
 
@@ -27,14 +27,16 @@ Welcome to the GildeAPI repository! GildeAPI is a School Information Display Sys
 ## Technologies Used
 
 - Frontend: HTML, CSS, JavaScript
-- Backend: Node.js (or your preferred backend technology)
-- APIs: NS (Dutch Railways) API for train information, OpenWeatherMap API for weather updates
+- Log-in system for Messages From Teachers feature.
+- APIs: NS (Dutch Railways) API for train information, Buienradar API for weather updates
 
 ## Getting Started
 
 To set up the project locally, follow these steps:
 
 1. Clone the repository:
+
+NOT FINISHED
 
    ```bash
 

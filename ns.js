@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Call the function to get departures
     getDepartures();
+
+
+    // refresh
+    setInterval(getDepartures, 1000);
 });
 
 function getDepartures() {

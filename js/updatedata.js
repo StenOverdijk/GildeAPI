@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
           const rowsHTML = data.map(row => {
             return `
             <div class="anouncements">            
-            <p><strong>${row.datum} </strong> </p>
-            <p><strong>${row.titel}</strong></p>
-            <p><strong>Inhoud:</strong> ${row.inhoud}</p>
+            <h1><strong>${row.datum} </strong> </h1>
+            <h1><strong>${row.titel}</strong></h1>
+            <h1><strong>Inhoud:</strong> ${row.inhoud}</h1>
             </div>`;
           }).join('');
   
@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error:', error);
       });
   }
+
+  
 
 
   

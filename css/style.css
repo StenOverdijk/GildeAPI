@@ -130,7 +130,7 @@ body {
 .table2 td {
     padding: 0px; /* Adjust the padding to your preference */
 }
-
+/* 
 #loginDiv {
     position: relative;
     width: 50%;
@@ -159,9 +159,9 @@ body {
     display: flex;
     position: relative;
     left: 25%;
-    background-color: lightgrey;
+    background-color: lightgrey; */
 
-}
+/* } */
 p3{
     size: 100px;
 }
